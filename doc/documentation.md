@@ -12,35 +12,38 @@ The lib is composed of 4 parts:
 
 # MiniTracker
 
+---
 `constructor (waveFn, soundDuration, volume) `
-*waveFn*: a function of signature `fn(sample, length)` which must return a floating value used to create an audiobuffer for each given note in TrackerFrequencies.
-*soundDuration*: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want.
-*volume*: kinda obvious I guess?
+
+* **waveFn**: a function of signature `fn(sample, length)` which must return a floating value used to create an audiobuffer for each given note in TrackerFrequencies.
+* **soundDuration**: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want.
+* **volume**: kinda obvious I guess?
 ---
 `initNoteBuffers ()`
-*Starts all the note buffers for this instrument. Call this manually if you want to change something in the instrument (volume, generation function, sound duration, etc).*
+* Starts all the note buffers for this instrument (it is called automatically by the constructor). Call this manually if you want to change something in the instrument (volume, generation function, sound duration, etc).
 ---
 `generateAudioBuffer (freq, fn, duration, volume)`
-*Use this one to generate a concrete note. Useful if you want to create notes of different duration/volume/function. So yes, you can actually have everything in one instrument - but you need to write a bit of code*
+* Use this one to generate a concrete note. Useful if you want to create notes of different duration/volume/function. So yes, you can actually have everything in one instrument - but you need to write a bit of code! (no need to call this manually).
 ---
 `play (note, delay)`
-*note*: any string. If the string you pass exists in **TrackerFrequencies**, it will use that frequency to play the note. If it doesn't (try to play "lol"), then you will get silence. Useful for rest and silence in general.
-*delay*: the amount (in seconds) that this will he played AFTER the current audiocontext time of this tracker.
+* **note**: any string. If the string you pass exists in **TrackerFrequencies**, it will use that frequency to play the note. If it doesn't (try to play "lol"), then you will get silence. Useful for rest and silence in general.
+* **delay**: a number. The amount (in seconds) that this will he played AFTER the current audiocontext time of this tracker.
 
 Example:
 `tracker.play('C#3', 10.0);` will play C#3 10 seconds after you call this method.
 ---
 `stop ()`
-*Stops all sounds (currently playing or future) for this tracker.*
-
+* Stops all sounds (currently playing or future) for this tracker.
+---
 
 # MultiTracker
 
-
+---
 `constructor ()`
+* *Kinda obvious right?*
 ---
 `load (json)`
-*Loads a json-formatted object with the following content:*
+* Loads a json-formatted object with the following content:
 
 ```javascript
 var some_song = {
@@ -66,22 +69,23 @@ Loading a new song will remove the previously loaded from memory.
 
 ---
 `play (fromTime, loop)`
-*fromTime*: start playing from the given time. TODO
-*loop*: if true, the song will loop until **stop()** is called.
+* **fromTime**: start playing from the given time. TODO
+* **loop**: if true, the song will loop until **stop()** is called.
 ---
 `stop ()`
-*Stops everything.*
+* Stops everything.
 ---
 `onEnded ()`
-*Internal method executed when the normal song playing stops. In the future, you will be able to exec a callback here too.*
+* Internal method executed when the normal song playing stops. In the future, you will be able to exec a callback here too.
+---
 
 # Available generation functions
 
-* TrackerSine
-* TrackerSawtooth
-* TrackerSquare
-* TrackerWhiteNoise
-* TrackerNoise
-* TrackerBass
-* TrackerLaser
-* TrackerBubble
+* *TrackerSine*: your typical sinusoidal function.
+* *TrackerSawtooth*: sawtooth shaped function.
+* *TrackerSquare*: square!
+* *TrackerWhiteNoise*: just noise.
+* *TrackerNoise*: sinusoidal modulated noise (good for drums).
+* *TrackerBass*: a nice low-toned sinusoidal modulated thing.
+* *TrackerLaser*: kinda laser thingy.
+* *TrackerBubble*: wopwopwop.
