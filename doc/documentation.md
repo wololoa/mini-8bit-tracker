@@ -16,8 +16,7 @@ The lib is composed of 4 parts:
 `constructor (waveFn, soundDuration, volume) `
 
 * **waveFn**: a function of signature `fn(sample, length)` which must return a floating value used to create an audiobuffer for each given note in TrackerFrequencies.
-* **soundDuration**: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want.
-* **volume**: kinda obvious I guess?
+* **soundDuration**: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want. * **volume**: kinda obvious I guess?
 ---
 `initNoteBuffers ()`
 * Starts all the note buffers for this instrument (it is called automatically by the constructor). Call this manually if you want to change something in the instrument (volume, generation function, sound duration, etc).
