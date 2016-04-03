@@ -16,7 +16,8 @@ The lib is composed of 4 parts:
 `constructor (waveFn, soundDuration, volume) `
 
 * **waveFn**: a function of signature `fn(sample, length)` which must return a floating value used to create an audiobuffer for each given note in TrackerFrequencies.
-* **soundDuration**: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want. * **volume**: kinda obvious I guess?
+* **soundDuration**: the duration in seconds that each note will play for this instrument. All notes of a given instrument have the same length. OOPS. Also: there are no "note duration" or BPM shenanigans here. You define the time as you want.
+* **volume**: kinda obvious I guess?
 ---
 `initNoteBuffers ()`
 * Starts all the note buffers for this instrument (it is called automatically by the constructor). Call this manually if you want to change something in the instrument (volume, generation function, sound duration, etc).
@@ -88,3 +89,13 @@ Loading a new song will remove the previously loaded from memory.
 * *TrackerBass*: a nice low-toned sinusoidal modulated thing.
 * *TrackerLaser*: kinda laser thingy.
 * *TrackerBubble*: wopwopwop.
+
+If you want to add a custom function, just use the following signature;
+
+`CustomFunction(sample, length) > return number`, where:
+
+*sample*: `frequency * i / rate` (and i is the current point in the buffer, from 0 to length).
+
+*time*: `i / length` (so basically the current percent, from 0.0 to 1.0).
+
+Note: you can skip both values and just create whatever the hell you want, however it is good to use at least sample to have a base frequency to work with.
