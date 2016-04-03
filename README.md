@@ -62,7 +62,7 @@ multi.play(0, true);
 
 If you want to see a somehow advanced usage, check the musixbox sample.
 
-Also, check the [docs](../doc/documentation.md) to see a quite simple and shitty API documentation.
+Also, check the [docs](./doc/documentation.md) to see a quite simple and shitty API documentation.
 
 # How to build
 
