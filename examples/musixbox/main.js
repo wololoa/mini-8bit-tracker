@@ -278,7 +278,6 @@ var ChannelLine = Entity.extend({
         this.callParent(delta);
     },
 
-    // TODO: USE ACTUAL FUCKING CONSTANTS!!!
     draw : function()
     {
         if(this.isSelected)
@@ -584,30 +583,6 @@ var MusixBox = State.extend({
         {
             this.channels[i].stop();
         }
-
-        /*
-        //------------------
-        var fileSelector = document.createElement('input');
-        fileSelector.setAttribute('type', 'file');
-        fileSelector.on("change", function(lol)
-            {
-                console.log("changed: ", lol);
-            });
-        console.log(fileSelector);
-
-         var selectDialogueLink = document.createElement('a');
-         selectDialogueLink.setAttribute('href', '');
-         selectDialogueLink.innerText = "Select File";
-
-         selectDialogueLink.onclick = function (evt) {
-              console.log("click event ", evt);
-              fileSelector.click();
-              return false;
-         }
-         selectDialogueLink.onclick();
-         //document.body.appendChild(selectDialogueLink);
-        //------------------
-        */
     },
 
     onBtnRecord : function(btnOn)
