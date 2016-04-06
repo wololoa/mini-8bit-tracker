@@ -1,0 +1,68 @@
+<h1 id="mini-8bit-tracker">Mini 8bit Tracker</h1>
+<p>a.k.a &quot;Incredible simple way to make NES/8bit/retro sounds in HTML5&quot;.</p>
+<h1 id="what">What</h1>
+<p>A very small (just two classes, an object and a couple functions) library that helps you making 8bit alike sounds and/or music.</p>
+<p>It uses <a href="https://github.com/ertrzyiks/basejs">basejs</a> to write code &quot;the way it is meant to be&quot;, WebAudio to make sounds, and the magic of <a href="http://micronjs.github.io/">micronjs</a> for the advanced example - musixbox, a &quot;complete&quot; tracker with 6 channels and whatnot.</p>
+<p>This thing is good for:</p>
+<ul>
+<li>playing sine/sawtooth/square/noisy-based sounds, using the <a href="http://www.phy.mtu.edu/~suits/notefreqs.html">Equal Temperament Tuning</a> (which means you just play notes like in real instruments).</li>
+<li>easy to overload/change the generation functions to make any sound you want.</li>
+<li>friendly C-D-E-F-G-A-B/DO-RE-MI-FA-SOL-LA-SI interface for all notes.</li>
+<li>a bunch of generation functions already in place (the ones above plus a couple extra ones for extra funkyness).</li>
+<li>possibility to just make a &quot;channel&quot; and start playing sounds or use a complete multi-channel tracker (to load and play your .json songs).</li>
+<li>awesome 6 channel support! (did I mention this is alpha version? :smile: )</li>
+</ul>
+<p>The base code for the audio generator is based on <a href="https://github.com/razh/neptune-blue-js13k-2014">this</a>. The code doesn&#39;t use oscillators or any other WebAudio fancy-shit because...</p>
+<h1 id="why">Why</h1>
+<p>Well, I wanted to explore and experiment with 8bit sounds in the browser for my games, and while <a href="https://github.com/grumdrig/jsfxr">sfxrjs</a> is the best thing to create 8bit SFX (because the original sfxr is just awesome) and <a href="https://github. com/meenie/band.js/">bandjs</a> is... kinda... actually, this is an overkill: not &quot;tweakable&quot; enough, it has too many classes/interfaces and didn&#39;t work for my purposes (make a simple tracker). Other tools (like <a href="http://chirp.rezoner.net/">chirp</a>) are cool but a bit &quot;too much for my needds&quot;. Also I was looking for a pure-code approach too, and not only something to make .wav files. So there you go!</p>
+<h1 id="how-to-use">How to use</h1>
+<p>Include minitracker.js in your project and then:</p>
+<pre><code class="lang-javascript">var test = new MiniTracker(TrackerBass, 1.0);
+test.play(&#39;C3&#39;, 0.0);
+test.play(&#39;E3&#39;, 1.0);
+test.play(&#39;G3&#39;, 2.0);
+test.play(&#39;C4&#39;, 3.0);
+</code></pre>
+<p>Or you can just instance an entire multitracker like this:</p>
+<pre><code class="lang-javascript">var yourSong = {
+    tracks : [
+        {
+            waveFn: TrackerSine,
+            soundDuration: 0.2,
+            volume: 4.0,
+            notes : &quot;DO3 RE3 MI3 DO3 DO3 RE3 MI3 DO3 MI3 FA3 SOL4&quot;
+        },
+        {
+            waveFn: TrackerBass,
+            soundDuration: 0.1,
+            volume: 1.0,
+            notes : &quot;DO2 DO3 DO2 DO3 MI2 MI3 MI2 MI3 SOL2 SOL3 SOL2 SOL3 DO2 DO3 DO2 DO3 MI2 MI3 MI2 MI3 SOL2 SOL3 SOL2 SOL3&quot;
+        }
+    ]
+};
+
+var multi = new MultiTracker();
+multi.load(yourSong);
+multi.play(0, true);
+</code></pre>
+<p>If you want to see a somehow advanced usage, check the musixbox sample.</p>
+<p>Also, check the <a href="./doc/documentation.md">docs</a> to see a quite simple and shitty API documentation.</p>
+<h1 id="how-to-build">How to build</h1>
+<p>Coming soon!</p>
+<h1 id="faq">FAQ</h1>
+<ul>
+<li><p>Q. Is this actually useful?
+Depends on your needs. I&#39;d like to keep using this for experiments.</p>
+</li>
+<li><p>Q. Can this create sounds like sfxr?
+Depends on how well you write your generation functions, but if you just want to create SFX... keep using sfxr.</p>
+</li>
+<li><p>Q. Will you develop this further or the musixbox editor?
+Likely not. I want to go back making games now :)</p>
+</li>
+<li><p>Q. Why is the tracker/editor so shitty?
+Well, making an app takes time. Everything you see there is kinda proof-of-concept code (including the icons and so on). The main idea is use it to create small loops (5-10 seconds) with a limited set of channels. Also this system is kinda not ready for full games, so you are better off playing .wav files or .mp3. Or maybe not!</p>
+</li>
+</ul>
+<h1 id="who">Who</h1>
+<p>(c) Almar. 2016. Check the license.</p>
