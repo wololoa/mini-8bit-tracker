@@ -1,0 +1,33 @@
+{
+  "name": "mini-8bit-tracker",
+  "version": "0.0.1",
+  "description": "a.k.a \"Incredible simple way to make NES/8bit/retro sounds in HTML5\".",
+  "main": "src/minitracker.js",
+  "directories": {
+    "doc": "doc",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "markdown": "gulp markdown",
+    "deploy": "gulp deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wololoa/mini-8bit-tracker.git"
+  },
+  "author": "ertrzyiks <mateusz.derks@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wololoa/mini-8bit-tracker/issues"
+  },
+  "homepage": "https://github.com/wololoa/mini-8bit-tracker#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-markdown": "^1.2.0",
+    "gulp-markdown-docs": "^0.1.5",
+    "gulp-markdox": "^0.1.1",
+    "gulp-rename": "^1.2.2"
+  }
+}
