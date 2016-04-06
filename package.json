@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
     "markdown": "gulp markdown",
     "deploy": "gulp deploy"
   },
@@ -24,7 +25,9 @@
   "homepage": "https://github.com/wololoa/mini-8bit-tracker#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-copy": "0.0.2",
     "gulp-gh-pages": "^0.5.4",
+    "gulp-html-replace": "^1.5.5",
     "gulp-markdown": "^1.2.0",
     "gulp-markdown-docs": "^0.1.5",
     "gulp-markdox": "^0.1.1",
