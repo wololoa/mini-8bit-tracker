@@ -64,6 +64,11 @@ If you want to see a somehow advanced usage, check the musixbox sample.
 
 Also, check the [docs](./doc/documentation.md) to see a quite simple and shitty API documentation.
 
+# Examples
+
+ * [Pure code](http://wololoa.github.io/mini-8bit-tracker/pure-code/)
+ * [MusixBox](http://wololoa.github.io/mini-8bit-tracker/musixbox/)
+
 # How to build
 
 Coming soon!
