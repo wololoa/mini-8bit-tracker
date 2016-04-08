@@ -16,8 +16,13 @@ gulp.task('copy-minitracker', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['copy-minitracker', 'markdown'], function () {
+gulp.task('copy-examples', function () {
     return gulp.src('examples/**/*')
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build', ['copy-examples', 'copy-minitracker', 'markdown'], function () {
+    return gulp.src('examples/**/*.html')
         .pipe(htmlreplace({
             'minitracker': '../minitracker.js'
         }))
@@ -25,6 +30,6 @@ gulp.task('build', ['copy-minitracker', 'markdown'], function () {
 });
 
 gulp.task('deploy', ['build'], function() {
-    return gulp.src('./examples/**/*')
+    return gulp.src('./dist/**/*')
         .pipe(ghPages());
 });
